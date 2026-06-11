@@ -44,6 +44,8 @@ if (auth) {
       if (lockScreen) lockScreen.style.display = 'none';
       loadPosts();
       loadBookings();
+      // Temporary runner to insert backdated post automatically
+      insertBackdatedPost();
     } else {
       // User is unauthenticated, redirect to login page
       window.location.href = 'login.html';
@@ -416,5 +418,44 @@ async function deleteBooking(id, name, isLocal) {
     localBookings.splice(id, 1);
     localStorage.setItem('rich_schools_bookings', JSON.stringify(localBookings));
     loadBookingsFromLocalStorage();
+  }
+}
+
+async function insertBackdatedPost() {
+  const check = localStorage.getItem('rich_schools_backdated_post_v2');
+  if (check || !db) return;
+  
+  try {
+    const postData = {
+      title: "Navigating UK Boarding School Admissions: A 2026 Guide",
+      category: "placement",
+      categoryLabel: "School Placement",
+      snippet: "Admissions at leading UK independent schools require careful preparation. Read our step-by-step guide on registration, assessment timelines, and interviews.",
+      content: `<h3>The Importance of Early Planning</h3>
+<p>Securing a place at a top-tier British boarding school is a milestone that requires careful, strategic planning. With registrations closing up to a year in advance at some institutions, starting early is essential.</p>
+
+<h3>1. Research and School Selection (12–18 Months Prior)</h3>
+<p>Begin by defining your child's unique academic, sporting, and creative profile. Rather than choosing schools based solely on league tables, search for environments where your child's personality will thrive. Schedule private tours and headmaster meetings during term time to experience the school's atmosphere first-hand.</p>
+
+<h3>2. The Registration Stage (12 Months Prior)</h3>
+<p>Most schools require registration forms to be submitted along with a fee by September of the year preceding entry. This is also when you should arrange references and reports from your child's current school.</p>
+
+<h3>3. Entrance Assessments (6–9 Months Prior)</h3>
+<p>Assessments are typically conducted between November and January. Students will sit papers in English, Mathematics, and sometimes Science or Verbal Reasoning. Preparation is key, but it should focus on building confidence rather than rote memorization.</p>
+
+<h3>4. Offers and Finalizing Placements</h3>
+<p>Offers are typically released in late spring. Once you accept an offer, you can finalize student visas, travel planning, and local UK guardianship / pastoral representation requirements.</p>`,
+      imageUrl: "assets/hero_bg.png",
+      createdAt: firebase.firestore.Timestamp.fromDate(new Date("2026-03-15T10:00:00Z")),
+      updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+    };
+    
+    await db.collection("posts").add(postData);
+    console.log("Backdated post inserted successfully!");
+    localStorage.setItem('rich_schools_backdated_post_v2', 'true');
+    // Refresh posts view in dashboard
+    loadPosts();
+  } catch (err) {
+    console.error("Failed to insert backdated post:", err);
   }
 }
