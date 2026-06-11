@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services — UK School Placement & Educational Advice | Rich Schools</title>
+  <meta name="description" content="A complete educational advisory service including school placement, academic assessments, educational advice and emergency pastoral care/guardianship.">
+  <link rel="stylesheet" href="index.css">
+  <script src="firebase-config.js?v=1" defer></script>
+  <script src="index.js?v=1" defer></script>
+</head>
+<body>
+
+  <!-- Premium Header / Navbar -->
+  <header>
+    <div class="header-container">
+      <a href="index.html" class="logo" id="logoLink">
+        <div class="logo-icon">🎓</div>
+        <div class="logo-text">
+          Rich Schools
+          <span>UK Educational Consultancy</span>
+        </div>
+      </a>
+      
+      <button class="mobile-nav-toggle" aria-label="Toggle navigation menu" id="mobileMenuBtn">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav id="mainNav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html" class="active">Services</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li class="mobile-only"><a href="book.html" class="btn btn-primary" style="padding: 0.6rem 1.2rem; min-block-size: auto; display: inline-flex;">Book consultation</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-right">
+        <a href="book.html" class="btn btn-primary" id="headerCtaBtn">Book consultation</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Page Header Hero -->
+    <section class="hero-sec" style="min-height: 45vh; padding: 6rem 2rem;" id="servicesHero">
+      <div class="hero-bg-wrapper">
+        <img src="assets/hero_bg.png" alt="Grand school hallway interior" id="servicesHeroBg">
+      </div>
+      <div class="hero-overlay" style="background: linear-gradient(to bottom, rgba(15,23,42,0.85) 0%, var(--color-bg) 100%);"></div>
+      <div class="section-container hero-content" style="max-width: 800px; text-align: center; margin: 0 auto;">
+        <span class="hero-tagline">Considered Support</span>
+        <h1 class="hero-title" style="font-size: clamp(2.2rem, 1.5rem + 3vw, 3.8rem);">Our services</h1>
+        <p class="hero-desc" style="font-size: 1.1rem; max-width: 700px; margin: 1.5rem auto 0 auto;">A complete advisory service for families investing in UK education — practical, personal, and grounded in trusted relationships.</p>
+      </div>
+    </section>
+
+    <!-- Service Detail 1: Educational Advice -->
+    <section id="advSec">
+      <div class="section-container info-grid">
+        <div class="info-text reveal-on-scroll" id="advText">
+          <span class="info-text-tag">Pillar One</span>
+          <h2>Educational Advice</h2>
+          <p>Navigating the paths of independent education requires forward planning. We provide strategic educational advice that factors in the child's academic profile and your long-term goals.</p>
+          <ul style="list-style: none; margin-bottom: 2rem;">
+            <li style="margin-bottom: 0.75rem; display: flex; gap: 0.75rem; align-items: flex-start; color: var(--color-text-muted);">
+              <span style="color: var(--color-accent); font-weight: bold;">✔</span> Guidance on curriculum selection (GCSEs, A-Levels, IB, Pre-U, BTECs)
+            </li>
+            <li style="margin-bottom: 0.75rem; display: flex; gap: 0.75rem; align-items: flex-start; color: var(--color-text-muted);">
+              <span style="color: var(--color-accent); font-weight: bold;">✔</span> Formulating university preparation strategies (Oxford, Cambridge, Russell Group)
+            </li>
+            <li style="margin-bottom: 0.75rem; display: flex; gap: 0.75rem; align-items: flex-start; color: var(--color-text-muted);">
+              <span style="color: var(--color-accent); font-weight: bold;">✔</span> Structural mapping of study pathways and key exam timelines
+            </li>
+          </ul>
+        </div>
+        <div class="info-image-container reveal-on-scroll" id="advImageWrapper" style="transition-delay: 0.2s;">
+          <img src="assets/hero_bg.png" alt="Strategic school counseling consultation" id="advImg">
+        </div>
+      </div>
+    </section>
+
+    <!-- Service Detail 2: School Placement -->
+    <section class="glass" id="placementSec" style="background: var(--color-bg-subtle); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border);">
+      <div class="section-container info-grid" style="direction: rtl;">
+        <div class="info-text reveal-on-scroll" id="placeText" style="direction: ltr;">
+          <span class="info-text-tag">Pillar Two</span>
+          <h2>School Placement</h2>
+          <p>We work directly with you to find and match your child to the ideal British day or boarding school. Our deep connection with leading independent institutions enables us to secure placements in schools where children thrive.</p>
+          <ul style="list-style: none; margin-bottom: 2rem;">
+            <li style="margin-bottom: 0.75rem; display: flex; gap: 0.75rem; align-items: flex-start; color: var(--color-text-muted);">
+              <span style="color: var(--color-accent); font-weight: bold;">✔</span> Personalized shortlist generation matching your child's learning profile
+            </li>
+            <li style="margin-bottom: 0.75rem; display: flex; gap: 0.75rem; align-items: flex-start; color: var(--color-text-muted);">
+              <span style="color: var(--color-accent); font-weight: bold;">✔</span> Application handling, essay reviews, and portfolio compilations
+            </li>
+            <li style="margin-bottom: 0.75rem; display: flex; gap: 0.75rem; align-items: flex-start; color: var(--color-text-muted);">
+              <span style="color: var(--color-accent); font-weight: bold;">✔</span> Entrance exam preparation and personalized mock interview practice
+            </li>
+            <li style="margin-bottom: 0.75rem; display: flex; gap: 0.75rem; align-items: flex-start; color: var(--color-text-muted);">
+              <span style="color: var(--color-accent); font-weight: bold;">✔</span> Coordinated school tours, family visits, and headmaster introductions
+            </li>
+          </ul>
+        </div>
+        <div class="info-image-container reveal-on-scroll" id="placeImageWrapper" style="transition-delay: 0.2s; direction: ltr;">
+          <img src="assets/hero_bg.png" alt="Historic British boarding school classroom" id="placeImg">
+        </div>
+      </div>
+    </section>
+
+    <!-- Service Detail 3: Pastoral Care -->
+    <section id="careSec">
+      <div class="section-container info-grid">
+        <div class="info-text reveal-on-scroll" id="careText">
+          <span class="info-text-tag">Pillar Three</span>
+          <h2>Pastoral Care & Guardianship</h2>
+          <p>For parents residing overseas, having a trusted, reliable local contact is critical. We provide continuous support, emergency guardianship representation, and act as a caring extension of your family in the UK.</p>
+          <ul style="list-style: none; margin-bottom: 2rem;">
+            <li style="margin-bottom: 0.75rem; display: flex; gap: 0.75rem; align-items: flex-start; color: var(--color-text-muted);">
+              <span style="color: var(--color-accent); font-weight: bold;">✔</span> Regular boarding house visits, progress reports, and headmaster dialogue
+            </li>
+            <li style="margin-bottom: 0.75rem; display: flex; gap: 0.75rem; align-items: flex-start; color: var(--color-text-muted);">
+              <span style="color: var(--color-accent); font-weight: bold;">✔</span> Emergency point of contact available 24/7 during school terms
+            </li>
+            <li style="margin-bottom: 0.75rem; display: flex; gap: 0.75rem; align-items: flex-start; color: var(--color-text-muted);">
+              <span style="color: var(--color-accent); font-weight: bold;">✔</span> Organization of half-term travel, airport transfers, and host family placements
+            </li>
+          </ul>
+        </div>
+        <div class="info-image-container reveal-on-scroll" id="careImageWrapper" style="transition-delay: 0.2s;">
+          <img src="assets/hero_bg.png" alt="Mentoring student support" id="careImg">
+        </div>
+      </div>
+    </section>
+
+    <!-- Service Detail 4: Academic Assessments -->
+    <section class="glass" id="assessSec" style="background: var(--color-bg-subtle); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border);">
+      <div class="section-container info-grid" style="direction: rtl;">
+        <div class="info-text reveal-on-scroll" id="assessText" style="direction: ltr;">
+          <span class="info-text-tag">Pillar Four</span>
+          <h2>Academic Assessments</h2>
+          <p>We run independent, honest testing evaluations to map out a child's current standards. This allows families to establish clear timelines, bridge curriculum differences, and select schools with absolute confidence.</p>
+          <ul style="list-style: none; margin-bottom: 2rem;">
+            <li style="margin-bottom: 0.75rem; display: flex; gap: 0.75rem; align-items: flex-start; color: var(--color-text-muted);">
+              <span style="color: var(--color-accent); font-weight: bold;">✔</span> Cognitive testing and evaluation of academic baseline skills
+            </li>
+            <li style="margin-bottom: 0.75rem; display: flex; gap: 0.75rem; align-items: flex-start; color: var(--color-text-muted);">
+              <span style="color: var(--color-accent); font-weight: bold;">✔</span> Written feedback highlighting strengths and specific improvement areas
+            </li>
+            <li style="margin-bottom: 0.75rem; display: flex; gap: 0.75rem; align-items: flex-start; color: var(--color-text-muted);">
+              <span style="color: var(--color-accent); font-weight: bold;">✔</span> Curricular gap analysis for pupils migrating from international school boards
+            </li>
+          </ul>
+        </div>
+        <div class="info-image-container reveal-on-scroll" id="assessImageWrapper" style="transition-delay: 0.2s; direction: ltr;">
+          <img src="assets/hero_bg.png" alt="Student writing test or study materials" id="assessImg">
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="notSureSec" style="text-align: center;">
+      <div class="section-container" style="max-width: 600px;">
+        <h2>Not sure where to start?</h2>
+        <p>Every journey is unique. Connect with us for a free, confidential initial discussion to review your child's requirements and see how we can assist.</p>
+        <a href="book.html" class="btn btn-primary" style="margin-top: 1rem;" id="freeChatBtn">Book a free initial chat</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Premium Footer -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-column" id="footerAboutCol">
+        <div class="logo" style="margin-bottom: 1.5rem;">
+          <div class="logo-icon">🎓</div>
+          <div class="logo-text">Rich Schools</div>
+        </div>
+        <p style="font-size: 0.95rem; line-height: 1.5; margin-bottom: 0;">Helping families navigate UK education with care and expertise. Let's take the stress off you.</p>
+      </div>
+      
+      <div class="footer-column" id="footerLinksCol">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column" id="footerConsultCol">
+        <h4>Consultation</h4>
+        <ul>
+          <li><a href="book.html">Book consultation</a></li>
+          <li><a href="contact.html">Home visits</a></li>
+          <li><a href="contact.html">Virtual meetings</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column" id="footerRegisterCol">
+        <h4>Receive Updates</h4>
+        <p style="font-size: 0.9rem; margin-bottom: 1rem;">Register to receive useful information and insights about the UK independent education sector.</p>
+        <form class="newsletter-form" id="footerSubForm">
+          <div class="newsletter-input-group">
+            <input type="email" placeholder="Your email address" required aria-label="Email address for newsletter" id="footerSubEmail">
+            <button type="submit" class="btn btn-primary" style="padding: 0.5rem 1.2rem; min-block-size: auto;" id="footerSubBtn">Register</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-copy" id="footerCopyright">
+        &copy; 2026 Rich Schools. All rights reserved.
+      </div>
+      <div class="footer-legal" id="footerLegalLinks">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms & Conditions</a>
+        <a href="unsubscribe.html">Unsubscribe</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book a Consultation — Rich Schools</title>
+  <meta name="description" content="Schedule a home visit or virtual consultation (Skype / Zoom / Teams) with a senior advisor. Navigate the UK education system with ease.">
+  <link rel="stylesheet" href="index.css">
+  <script src="firebase-config.js?v=1" defer></script>
+  <script src="index.js?v=1" defer></script>
+</head>
+<body>
+
+  <!-- Premium Header / Navbar -->
+  <header>
+    <div class="header-container">
+      <a href="index.html" class="logo" id="logoLink">
+        <div class="logo-icon">🎓</div>
+        <div class="logo-text">
+          Rich Schools
+          <span>UK Educational Consultancy</span>
+        </div>
+      </a>
+      
+      <button class="mobile-nav-toggle" aria-label="Toggle navigation menu" id="mobileMenuBtn">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav id="mainNav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li class="mobile-only"><a href="book.html" class="btn btn-primary active" style="padding: 0.6rem 1.2rem; min-block-size: auto; display: inline-flex;">Book consultation</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-right">
+        <a href="book.html" class="btn btn-primary active" id="headerCtaBtn">Book consultation</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Booking Hero -->
+    <section class="hero-sec" style="min-height: 40vh; padding: 5rem 2rem;" id="bookingHero">
+      <div class="hero-bg-wrapper">
+        <img src="assets/hero_bg.png" alt="Consultant booking desk meeting background" id="bookingHeroBg">
+      </div>
+      <div class="hero-overlay" style="background: linear-gradient(to bottom, rgba(15,23,42,0.85) 0%, var(--color-bg) 100%);"></div>
+      <div class="section-container hero-content" style="max-width: 800px; text-align: center; margin: 0 auto;">
+        <span class="hero-tagline">Bespoke Scheduling</span>
+        <h1 class="hero-title" style="font-size: clamp(2.2rem, 1.5rem + 3vw, 3.8rem);">Book a consultation</h1>
+        <p class="hero-desc" style="font-size: 1.1rem; max-width: 600px; margin: 1.5rem auto 0 auto;">Choose a home visit or virtual meeting (Skype / Zoom). We'll be in touch to confirm.</p>
+      </div>
+    </section>
+
+    <!-- Interactive Scheduler Wizard Section -->
+    <section id="schedulerSec">
+      <div class="section-container">
+        
+        <div id="bookingWizardContainer" class="scheduler-wizard glass">
+          <!-- Progress dots indicator -->
+          <div class="step-indicator" id="stepIndicator" role="progressbar" aria-valuemin="1" aria-valuemax="4" aria-valuenow="1">
+            <div class="step-dot active" id="dot1">1</div>
+            <div class="step-dot" id="dot2">2</div>
+            <div class="step-dot" id="dot3">3</div>
+            <div class="step-dot" id="dot4">4</div>
+          </div>
+
+          <!-- Wizard panel 1: Select Service -->
+          <div class="step-panel active" id="panel1" role="tabpanel">
+            <h3 style="margin-bottom: 0.5rem;">Select educational service</h3>
+            <p style="margin-bottom: 2rem;">Which consulting area would you like to discuss with our senior advisor?</p>
+            
+            <div class="choices-grid" data-type="service">
+              <div class="choice-card glass" data-value="Educational Advice">
+                <h4>Educational Advice</h4>
+                <p>Curriculum guidance, path mapping, and university prep strategies.</p>
+              </div>
+              <div class="choice-card glass" data-value="School Placement">
+                <h4>School Placement</h4>
+                <p>Matching, touring, and applications for boarding and day schools.</p>
+              </div>
+              <div class="choice-card glass" data-value="Pastoral Care">
+                <h4>Pastoral Care & Guardianship</h4>
+                <p>Ongoing school visits, local representation, and travel planning.</p>
+              </div>
+              <div class="choice-card glass" data-value="Academic Assessments">
+                <h4>Academic Assessments</h4>
+                <p>Independent testing, learning analysis, and gap recommendations.</p>
+              </div>
+            </div>
+
+            <div class="wizard-actions">
+              <span></span>
+              <button class="btn btn-primary btn-next" disabled id="nextBtn1">Continue</button>
+            </div>
+          </div>
+
+          <!-- Wizard panel 2: Select Format -->
+          <div class="step-panel" id="panel2" role="tabpanel">
+            <h3 style="margin-bottom: 0.5rem;">Select meeting format</h3>
+            <p style="margin-bottom: 2rem;">How would you prefer to conduct the consultation meeting?</p>
+            
+            <div class="choices-grid" data-type="format">
+              <div class="choice-card glass" data-value="Home Visit">
+                <h4>Home Visit</h4>
+                <p>Available at private residences across the UK. Perfect for in-person evaluations.</p>
+              </div>
+              <div class="choice-card glass" data-value="Virtual Meeting">
+                <h4>Virtual Meeting</h4>
+                <p>Convenient video consultation via Skype, Zoom, or Microsoft Teams.</p>
+              </div>
+            </div>
+
+            <div class="wizard-actions">
+              <button class="btn btn-secondary btn-prev" id="prevBtn2">Back</button>
+              <button class="btn btn-primary btn-next" disabled id="nextBtn2">Continue</button>
+            </div>
+          </div>
+
+          <!-- Wizard panel 3: Select Date & Time -->
+          <div class="step-panel" id="panel3" role="tabpanel">
+            <h3 style="margin-bottom: 0.5rem;">Select date and time slot</h3>
+            <p style="margin-bottom: 2rem;">Choose your preferred date and convenient time. All times are displayed in London (BST/GMT) zone.</p>
+            
+            <div class="date-time-picker">
+              <div class="calendar-control">
+                <label for="bookingDate" style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: var(--color-primary);">Select Date</label>
+                <input type="date" id="bookingDate" required>
+              </div>
+              
+              <div>
+                <label style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: var(--color-primary);">Available Time Slots</label>
+                <div class="time-slots">
+                  <button type="button" class="time-slot-btn">09:00 AM</button>
+                  <button type="button" class="time-slot-btn">10:30 AM</button>
+                  <button type="button" class="time-slot-btn">11:30 AM</button>
+                  <button type="button" class="time-slot-btn">01:30 PM</button>
+                  <button type="button" class="time-slot-btn">03:00 PM</button>
+                  <button type="button" class="time-slot-btn">04:30 PM</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="wizard-actions">
+              <button class="btn btn-secondary btn-prev" id="prevBtn3">Back</button>
+              <button class="btn btn-primary btn-next" disabled id="nextBtn3">Continue</button>
+            </div>
+          </div>
+
+          <!-- Wizard panel 4: Contact details -->
+          <div class="step-panel" id="panel4" role="tabpanel">
+            <h3 style="margin-bottom: 0.5rem;">Enter contact details</h3>
+            <p style="margin-bottom: 2rem;">Provide your details. An advisor will contact you shortly after reservation to confirm coordinates.</p>
+            
+            <form id="bookingDetailsForm">
+              <div class="choices-grid" style="grid-template-columns: 1fr 1fr; margin-bottom: 0; gap: 1.5rem;">
+                <div class="form-group">
+                  <label for="clientName">Full Name</label>
+                  <input type="text" id="clientName" name="name" placeholder="E.g., Charlotte Sterling" required>
+                </div>
+                <div class="form-group">
+                  <label for="clientEmail">Email Address</label>
+                  <input type="email" id="clientEmail" name="email" placeholder="E.g., charlotte@example.com" required>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="clientPhone">Phone Number</label>
+                <input type="tel" id="clientPhone" name="phone" placeholder="E.g., +44 7700 900077" required>
+              </div>
+              <div class="form-group">
+                <label for="clientNotes">Additional Notes / Special Requirements</label>
+                <textarea id="clientNotes" name="notes" rows="4" placeholder="Briefly describe your child's age, goals, or current school situation..."></textarea>
+              </div>
+              <p class="form-note">By submitting, you agree to receive communications regarding your educational consultation.</p>
+            </form>
+
+            <div class="wizard-actions">
+              <button class="btn btn-secondary btn-prev" id="prevBtn4">Back</button>
+              <button type="submit" class="btn btn-primary" id="btnFinish">Complete Reservation</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Success Message (Initially Hidden) -->
+        <div id="bookingSuccessContainer" class="success-card glass" style="max-width: 650px; margin: 3rem auto 0 auto; display: none;">
+          <div class="success-icon">✓</div>
+          <h2>Consultation Request Received</h2>
+          <p style="margin-top: 1rem; margin-bottom: 2rem;">Thank you for booking. A senior educational advisor will contact you within one working day to confirm details and provide coordinates.</p>
+          
+          <div class="glass" style="border-radius: var(--radius-sm); padding: 1.5rem; text-align: left; margin-bottom: 2.5rem;" id="bookingSummary">
+            <!-- Populated dynamically by JS -->
+          </div>
+          
+          <a href="index.html" class="btn btn-primary" id="successHomeBtn">Return to Home</a>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Premium Footer -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-column" id="footerAboutCol">
+        <div class="logo" style="margin-bottom: 1.5rem;">
+          <div class="logo-icon">🎓</div>
+          <div class="logo-text">Rich Schools</div>
+        </div>
+        <p style="font-size: 0.95rem; line-height: 1.5; margin-bottom: 0;">Helping families navigate UK education with care and expertise. Let's take the stress off you.</p>
+      </div>
+      
+      <div class="footer-column" id="footerLinksCol">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column" id="footerConsultCol">
+        <h4>Consultation</h4>
+        <ul>
+          <li><a href="book.html">Book consultation</a></li>
+          <li><a href="contact.html">Home visits</a></li>
+          <li><a href="contact.html">Virtual meetings</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column" id="footerRegisterCol">
+        <h4>Receive Updates</h4>
+        <p style="font-size: 0.9rem; margin-bottom: 1rem;">Register to receive useful information and insights about the UK independent education sector.</p>
+        <form class="newsletter-form" id="footerSubForm">
+          <div class="newsletter-input-group">
+            <input type="email" placeholder="Your email address" required aria-label="Email address for newsletter" id="footerSubEmail">
+            <button type="submit" class="btn btn-primary" style="padding: 0.5rem 1.2rem; min-block-size: auto;" id="footerSubBtn">Register</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-copy" id="footerCopyright">
+        &copy; 2026 Rich Schools. All rights reserved.
+      </div>
+      <div class="footer-legal" id="footerLegalLinks">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms & Conditions</a>
+        <a href="unsubscribe.html">Unsubscribe</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

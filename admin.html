@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard — Rich Schools</title>
+  <meta name="description" content="Manage blog posts, content, and image uploads for Rich Schools.">
+  <link rel="stylesheet" href="index.css">
+  <style>
+    /* Admin specific layout styles */
+    .admin-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1.8fr;
+      gap: 3rem;
+      align-items: start;
+      margin-top: 2rem;
+    }
+    .post-table-wrapper {
+      overflow-x: auto;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+    th, td {
+      padding: 1rem;
+      text-align: left;
+      border-bottom: 1px solid var(--color-border);
+    }
+    th {
+      font-weight: 700;
+      color: var(--color-primary);
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+    }
+    td {
+      font-size: 0.95rem;
+    }
+    .action-btn-group {
+      display: flex;
+      gap: 0.5rem;
+    }
+    .btn-icon {
+      padding: 0.4rem 0.8rem;
+      font-size: 0.85rem;
+      min-block-size: auto;
+    }
+    .btn-danger {
+      background-color: hsl(0, 75%, 60%);
+      color: white;
+    }
+    .btn-danger:hover {
+      background-color: hsl(0, 75%, 50%);
+    }
+    .progress-bar-container {
+      width: 100%;
+      background-color: var(--color-border);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      height: 10px;
+      margin-top: 0.5rem;
+      display: none;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      background-color: var(--color-accent);
+      width: 0%;
+      transition: width 0.1s ease;
+    }
+    .upload-status-text {
+      font-size: 0.85rem;
+      color: var(--color-text-muted);
+      margin-top: 0.25rem;
+      display: none;
+    }
+    .preview-thumbnail {
+      max-width: 150px;
+      border-radius: var(--radius-sm);
+      margin-top: 0.5rem;
+      display: none;
+    }
+    /* Lock Screen Overlay during Auth Check */
+    #lockScreen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: var(--color-bg);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+    @media (max-width: 992px) {
+      .admin-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+  <!-- Static Firebase Compat SDK imports for file:// compatibility -->
+  <script src="firebase-config.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+  <script src="admin.js" defer></script>
+</head>
+<body>
+
+  <!-- Lock Screen for Auth protection -->
+  <div id="lockScreen">
+    <div style="text-align: center;">
+      <span style="font-size: 3rem; display: block; margin-bottom: 1rem;">🔐</span>
+      Authenticating admin session...
+    </div>
+  </div>
+
+  <!-- Premium Header / Navbar -->
+  <header class="glass">
+    <div class="header-container">
+      <a href="index.html" class="logo" id="logoLink">
+        <div class="logo-icon">🎓</div>
+        <div class="logo-text">
+          Rich Schools
+          <span>Admin Portal</span>
+        </div>
+      </a>
+      <div class="header-right">
+        <span id="adminUserEmail" style="font-size: 0.95rem; font-weight: 500; color: var(--color-text-muted);"></span>
+        <button class="btn btn-secondary" id="logoutBtn" style="padding: 0.5rem 1.2rem; min-block-size: auto;">Logout</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <div class="section-container">
+        
+        <h1 id="dashTitle" style="margin-bottom: 1rem;">Journal Manager</h1>
+        <p>Create, modify and delete blog articles. All changes are synced instantly to the main blog page.</p>
+
+        <div class="admin-grid">
+          <!-- Left Panel: Create or Edit Form -->
+          <div class="glass" style="padding: 2.5rem; border-radius: var(--radius-md);" id="editorPanel">
+            <h3 id="formTitle">Create New Post</h3>
+            <p id="formSubTitle" style="margin-bottom: 2rem;">Write a new educational article for the site feed.</p>
+            
+            <form id="postForm">
+              <input type="hidden" id="postId" value="">
+              
+              <div class="form-group">
+                <label for="postTitle">Article Title</label>
+                <input type="text" id="postTitle" placeholder="E.g., Preparing for the 13+ Common Entrance" required>
+              </div>
+
+              <div class="form-group">
+                <label for="postCategory">Category</label>
+                <select id="postCategory" required>
+                  <option value="" disabled selected>Select category...</option>
+                  <option value="advice">Educational Advice</option>
+                  <option value="placement">School Placement</option>
+                  <option value="care">Pastoral Care & Guardianship</option>
+                  <option value="assessments">Academic Assessments</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="postSnippet">Brief Summary (Snippet)</label>
+                <textarea id="postSnippet" rows="3" placeholder="Provide a brief summary card overview text (2-3 sentences)..." required></textarea>
+              </div>
+
+              <div class="form-group">
+                <label for="postImageUrl">Featured Image URL</label>
+                <input type="url" id="postImageUrl" placeholder="Paste image URL (e.g. from Unsplash) or select a preset..." required>
+                <div style="margin-top: 0.5rem; display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center;" id="presetContainer">
+                  <span style="font-size: 0.85rem; color: var(--color-text-muted); margin-right: 0.25rem;">Presets:</span>
+                  <button type="button" class="btn btn-secondary preset-btn" style="padding: 0.25rem 0.75rem; font-size: 0.8rem; min-block-size: auto;" data-url="assets/hero_bg.png">School Courtyard</button>
+                  <button type="button" class="btn btn-secondary preset-btn" style="padding: 0.25rem 0.75rem; font-size: 0.8rem; min-block-size: auto;" data-url="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=600">University Campus</button>
+                  <button type="button" class="btn btn-secondary preset-btn" style="padding: 0.25rem 0.75rem; font-size: 0.8rem; min-block-size: auto;" data-url="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=600">Students Study</button>
+                </div>
+                <img id="imagePreview" class="preview-thumbnail" alt="Selected thumbnail preview">
+              </div>
+
+              <div class="form-group">
+                <label for="postContent">Detailed Body Content (HTML or Plain Text)</label>
+                <textarea id="postContent" rows="10" placeholder="Type the main article contents here..." required></textarea>
+              </div>
+
+              <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+                <button type="submit" class="btn btn-primary" id="savePostBtn" style="flex-grow: 1;">Save Post</button>
+                <button type="button" class="btn btn-secondary" id="cancelEditBtn" style="display: none;">Cancel</button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Right Panel: Posts Listing -->
+          <div class="glass" style="padding: 2.5rem; border-radius: var(--radius-md);" id="listingPanel">
+            <h3>Published Articles</h3>
+            <p style="margin-bottom: 2rem;">Manage active publications below.</p>
+            
+            <div class="post-table-wrapper">
+              <table id="postsTable">
+                <thead>
+                  <tr>
+                    <th>Title</th>
+                    <th>Category</th>
+                    <th>Date</th>
+                    <th style="text-align: right;">Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="postsTableBody">
+                  <tr>
+                    <td colspan="4" style="text-align: center; color: var(--color-text-muted);">Fetching database items...</td>
+                  </tr>
+                </tbody>
+              </table>
+          </div>
+        </div>
+
+        <!-- Section: Consultation Bookings -->
+        <div class="glass" style="padding: 2.5rem; border-radius: var(--radius-md); margin-top: 3rem;" id="bookingsPanel">
+          <h3>Consultation Bookings</h3>
+          <p style="margin-bottom: 2rem;">Review and manage incoming educational consultation requests.</p>
+          
+          <div class="post-table-wrapper">
+            <table id="bookingsTable">
+              <thead>
+                <tr>
+                  <th>Client Name</th>
+                  <th>Contact Details</th>
+                  <th>Service Requested</th>
+                  <th>Format & Schedule</th>
+                  <th>Additional Notes</th>
+                  <th style="text-align: right;">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="bookingsTableBody">
+                <tr>
+                  <td colspan="6" style="text-align: center; color: var(--color-text-muted);">Fetching booking requests...</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Premium Footer -->
+  <footer>
+    <div class="footer-bottom" style="border-top: none; padding-top: 0;">
+      <div class="footer-copy">&copy; 2026 Rich Schools Admin. All rights reserved.</div>
+      <div class="footer-legal">
+        <a href="index.html">Main Site</a>
+        <a href="blog.html">Public Journal</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

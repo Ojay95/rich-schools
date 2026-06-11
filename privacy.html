@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy — Rich Schools</title>
+  <meta name="description" content="Privacy Policy for Rich Schools. Learn how we collect, protect, and use your personal information.">
+  <link rel="stylesheet" href="index.css">
+  <script src="firebase-config.js?v=1" defer></script>
+  <script src="index.js?v=1" defer></script>
+</head>
+<body>
+
+  <!-- Premium Header / Navbar -->
+  <header>
+    <div class="header-container">
+      <a href="index.html" class="logo" id="logoLink">
+        <div class="logo-icon">🎓</div>
+        <div class="logo-text">
+          Rich Schools
+          <span>UK Educational Consultancy</span>
+        </div>
+      </a>
+      
+      <button class="mobile-nav-toggle" aria-label="Toggle navigation menu" id="mobileMenuBtn">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav id="mainNav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li class="mobile-only"><a href="book.html" class="btn btn-primary" style="padding: 0.6rem 1.2rem; min-block-size: auto; display: inline-flex;">Book consultation</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-right">
+        <a href="book.html" class="btn btn-primary" id="headerCtaBtn">Book consultation</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <div class="section-container" style="max-width: 800px; padding: 4rem 0;">
+        <h1 style="margin-bottom: 2rem;">Privacy Policy</h1>
+        
+        <p><strong>Effective Date: June 11, 2026</strong></p>
+        
+        <p>At Rich Schools, we are committed to protecting and respecting your privacy. This Privacy Policy explains when, why, and how we collect personal information about people who visit our website, contact us, or register to receive newsletters and consultancy services.</p>
+        
+        <h3 style="margin-top: 2rem;">1. Information We Collect</h3>
+        <p>We may collect and process the following information about you:</p>
+        <ul style="margin-left: 2rem; margin-bottom: 1.5rem; color: var(--color-text-muted);">
+          <li>Personal identification details (Name, email address, phone number) when you book a consultation or submit a contact inquiry.</li>
+          <li>Details about your child's age, current schooling, and educational goals that you choose to provide in our scheduler notes.</li>
+          <li>Your IP address, web browser type, and navigation logs collected through functional site analytics.</li>
+        </ul>
+
+        <h3 style="margin-top: 2rem;">2. How We Use Your Information</h3>
+        <p>We use your personal details to:</p>
+        <ul style="margin-left: 2rem; margin-bottom: 1.5rem; color: var(--color-text-muted);">
+          <li>Fulfill, schedule, and confirm your requested consultation meetings.</li>
+          <li>Address, process, and reply to message inquiries submitted through our contact form.</li>
+          <li>Send you newsletter publications, independent school news, and insights (only if you have explicitly registered).</li>
+        </ul>
+
+        <h3 style="margin-top: 2rem;">3. Data Security</h3>
+        <p>The security of your personal data is paramount. We implement strict technical and organizational measures to prevent unauthorized access, accidental alteration, or disclosure of details. We never sell, rent, or lease your personal data to third-party brokers.</p>
+
+        <h3 style="margin-top: 2rem;">4. Your Rights</h3>
+        <p>Under the UK General Data Protection Regulation (UK GDPR), you hold rights to access, rectify, or erase your personal information. You can withdraw newsletter subscription consents at any time by visiting our Unsubscribe portal or emailing our data controller.</p>
+
+        <h3 style="margin-top: 2rem;">5. Contact Us</h3>
+        <p>If you have any questions regarding this privacy policy or our data management practices, please contact us at <a href="mailto:info@rich-schools.com" style="color: var(--color-accent); font-weight: 600;">info@rich-schools.com</a>.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Premium Footer -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-column" id="footerAboutCol">
+        <div class="logo" style="margin-bottom: 1.5rem;">
+          <div class="logo-icon">🎓</div>
+          <div class="logo-text">Rich Schools</div>
+        </div>
+        <p style="font-size: 0.95rem; line-height: 1.5; margin-bottom: 0;">Helping families navigate UK education with care and expertise. Let's take the stress off you.</p>
+      </div>
+      
+      <div class="footer-column" id="footerLinksCol">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column" id="footerConsultCol">
+        <h4>Consultation</h4>
+        <ul>
+          <li><a href="book.html">Book consultation</a></li>
+          <li><a href="contact.html">Home visits</a></li>
+          <li><a href="contact.html">Virtual meetings</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column" id="footerRegisterCol">
+        <h4>Receive Updates</h4>
+        <p style="font-size: 0.9rem; margin-bottom: 1rem;">Register to receive useful information and insights about the UK independent education sector.</p>
+        <form class="newsletter-form" id="footerSubForm">
+          <div class="newsletter-input-group">
+            <input type="email" placeholder="Your email address" required aria-label="Email address for newsletter" id="footerSubEmail">
+            <button type="submit" class="btn btn-primary" style="padding: 0.5rem 1.2rem; min-block-size: auto;" id="footerSubBtn">Register</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-copy" id="footerCopyright">
+        &copy; 2026 Rich Schools. All rights reserved.
+      </div>
+      <div class="footer-legal" id="footerLegalLinks">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms & Conditions</a>
+        <a href="unsubscribe.html">Unsubscribe</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

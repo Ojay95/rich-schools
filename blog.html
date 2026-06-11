@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Journal — Rich Schools</title>
+  <meta name="description" content="Recent posts on UK education, school placement, boarding admissions, and family life abroad.">
+  <link rel="stylesheet" href="index.css">
+  <script src="firebase-config.js?v=1" defer></script>
+  <script src="index.js?v=1" defer></script>
+</head>
+<body>
+
+  <!-- Premium Header / Navbar -->
+  <header>
+    <div class="header-container">
+      <a href="index.html" class="logo" id="logoLink">
+        <div class="logo-icon">🎓</div>
+        <div class="logo-text">
+          Rich Schools
+          <span>UK Educational Consultancy</span>
+        </div>
+      </a>
+      
+      <button class="mobile-nav-toggle" aria-label="Toggle navigation menu" id="mobileMenuBtn">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav id="mainNav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="blog.html" class="active">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li class="mobile-only"><a href="book.html" class="btn btn-primary" style="padding: 0.6rem 1.2rem; min-block-size: auto; display: inline-flex;">Book consultation</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-right">
+        <a href="book.html" class="btn btn-primary" id="headerCtaBtn">Book consultation</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Blog Hero -->
+    <section class="hero-sec" style="min-height: 40vh; padding: 5rem 2rem;" id="blogHero">
+      <div class="hero-bg-wrapper">
+        <img src="assets/hero_bg.png" alt="Stacked library books in old building" id="blogHeroBg">
+      </div>
+      <div class="hero-overlay" style="background: linear-gradient(to bottom, rgba(15,23,42,0.85) 0%, var(--color-bg) 100%);"></div>
+      <div class="section-container hero-content" style="max-width: 800px; text-align: center; margin: 0 auto;">
+        <span class="hero-tagline">Consultancy Journal</span>
+        <h1 class="hero-title" style="font-size: clamp(2.2rem, 1.5rem + 3vw, 3.8rem);">Journal</h1>
+        <p class="hero-desc" style="font-size: 1.1rem; max-width: 600px; margin: 1.5rem auto 0 auto;">Recent posts on UK education, school placement and family life abroad.</p>
+      </div>
+    </section>
+
+    <!-- Main Blog Controls & Feed -->
+    <section id="blogFeedSec">
+      <div class="section-container">
+        
+        <!-- Search & Category Filters -->
+        <div class="blog-controls" id="blogControls">
+          <div class="blog-search-wrapper" id="blogSearchWrapper">
+            <span class="blog-search-icon">🔍</span>
+            <input type="text" placeholder="Search articles..." class="blog-search-input" id="blogSearch" aria-label="Search blog posts">
+          </div>
+          
+          <div class="blog-tags" id="blogTags" role="tablist">
+            <button class="blog-tag active" data-tag="all" role="tab" aria-selected="true" id="tagAll">All Articles</button>
+            <button class="blog-tag" data-tag="advice" role="tab" aria-selected="false" id="tagAdvice">Educational Advice</button>
+            <button class="blog-tag" data-tag="placement" role="tab" aria-selected="false" id="tagPlacement">School Placement</button>
+            <button class="blog-tag" data-tag="care" role="tab" aria-selected="false" id="tagCare">Pastoral Care</button>
+            <button class="blog-tag" data-tag="assessments" role="tab" aria-selected="false" id="tagAssessments">Assessments</button>
+          </div>
+        </div>
+
+        <!-- Dynamic Blog Grid -->
+        <div class="blog-grid" id="blogGrid">
+          <!-- Populated dynamically by JS -->
+          <div style="text-align: center; grid-column: 1/-1; padding: 3rem 0; color: var(--color-text-muted);" id="blogLoading">
+            Loading articles...
+          </div>
+        </div>
+
+        <!-- No Results Msg -->
+        <div class="blog-no-results glass" id="noResults" style="border-radius: var(--radius-md);">
+          <span style="font-size: 3rem; display: block; margin-bottom: 1.5rem;">🔎</span>
+          <h3>No articles match your criteria</h3>
+          <p style="margin: 0.5rem 0 0 0;">Try adjusting your search query or selecting a different category tag.</p>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Premium Footer -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-column" id="footerAboutCol">
+        <div class="logo" style="margin-bottom: 1.5rem;">
+          <div class="logo-icon">🎓</div>
+          <div class="logo-text">Rich Schools</div>
+        </div>
+        <p style="font-size: 0.95rem; line-height: 1.5; margin-bottom: 0;">Helping families navigate UK education with care and expertise. Let's take the stress off you.</p>
+      </div>
+      
+      <div class="footer-column" id="footerLinksCol">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column" id="footerConsultCol">
+        <h4>Consultation</h4>
+        <ul>
+          <li><a href="book.html">Book consultation</a></li>
+          <li><a href="contact.html">Home visits</a></li>
+          <li><a href="contact.html">Virtual meetings</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column" id="footerRegisterCol">
+        <h4>Receive Updates</h4>
+        <p style="font-size: 0.9rem; margin-bottom: 1rem;">Register to receive useful information and insights about the UK independent education sector.</p>
+        <form class="newsletter-form" id="footerSubForm">
+          <div class="newsletter-input-group">
+            <input type="email" placeholder="Your email address" required aria-label="Email address for newsletter" id="footerSubEmail">
+            <button type="submit" class="btn btn-primary" style="padding: 0.5rem 1.2rem; min-block-size: auto;" id="footerSubBtn">Register</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-copy" id="footerCopyright">
+        &copy; 2026 Rich Schools. All rights reserved.
+      </div>
+      <div class="footer-legal" id="footerLegalLinks">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms & Conditions</a>
+        <a href="unsubscribe.html">Unsubscribe</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

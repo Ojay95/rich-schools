@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rich Schools — Helping to look after their education</title>
+  <meta name="description" content="UK educational consultancy helping families with school placement, educational advice, pastoral care and academic assessments.">
+  <link rel="stylesheet" href="index.css">
+  <script src="firebase-config.js?v=1" defer></script>
+  <script src="index.js?v=1" defer></script>
+</head>
+<body>
+
+  <!-- Premium Header / Navbar -->
+  <header>
+    <div class="header-container">
+      <a href="index.html" class="logo" id="logoLink">
+        <div class="logo-icon">🎓</div>
+        <div class="logo-text">
+          Rich Schools
+          <span>UK Educational Consultancy</span>
+        </div>
+      </a>
+      
+      <button class="mobile-nav-toggle" aria-label="Toggle navigation menu" id="mobileMenuBtn">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav id="mainNav">
+        <ul>
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li class="mobile-only"><a href="book.html" class="btn btn-primary" style="padding: 0.6rem 1.2rem; min-block-size: auto; display: inline-flex;">Book consultation</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-right">
+        <a href="book.html" class="btn btn-primary" id="headerCtaBtn">Book consultation</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero-sec" id="heroSec">
+      <div class="hero-bg-wrapper">
+        <img src="assets/hero_bg.png" alt="Historic British Boarding School Courtyard" id="heroBgImg">
+      </div>
+      <div class="hero-overlay"></div>
+      <div class="section-container hero-content">
+        <span class="hero-tagline">UK Educational Consultancy</span>
+        <h1 class="hero-title">Helping to look after their education.</h1>
+        <p class="hero-desc">From boarding placements to pastoral care, we guide families through the UK education system with warmth, integrity and decades of trusted relationships.</p>
+        <div class="hero-btns">
+          <a href="book.html" class="btn btn-primary" id="heroBookBtn">Book a consultation</a>
+          <a href="services.html" class="btn btn-secondary" id="heroServicesBtn">Explore services</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats / Trust Banner -->
+    <section class="stats-section" id="statsSec">
+      <div class="section-container stats-grid">
+        <div class="stat-item reveal-on-scroll" id="statSchools">
+          <h3>50+</h3>
+          <p>UK INDEPENDENT SCHOOLS</p>
+        </div>
+        <div class="stat-item reveal-on-scroll" id="statFamilies" style="transition-delay: 0.1s;">
+          <h3>100+</h3>
+          <p>FAMILIES PLACED SUCCESSFULLY</p>
+        </div>
+        <div class="stat-item reveal-on-scroll" id="statPersonal" style="transition-delay: 0.2s;">
+          <h3>100%</h3>
+          <p>BESPOKE ADVISOR LEADERSHIP</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Who We Are Intro Section -->
+    <section id="aboutIntroSec" class="light-section">
+      <div class="section-container info-grid">
+        <div class="info-text reveal-on-scroll" id="aboutIntroText">
+          <span class="info-text-tag">Who we are</span>
+          <h2>A trusted partner for families navigating UK education.</h2>
+          <p>Rich Schools is a UK-based consultancy nurturing the potential of children from across the world. We've built strong relationships with leading independent schools, sixth-form colleges and tutors throughout England, Scotland and Wales.</p>
+          <p>Whether you're researching from abroad or planning a move, we offer honest, attentive advice — and we stay close after placement is complete.</p>
+          <a href="about.html" class="btn btn-secondary" style="margin-top: 1rem;" id="aboutReadMoreBtn">Read more about us →</a>
+        </div>
+        <div class="info-image-container reveal-on-scroll" id="aboutIntroImageWrapper" style="transition-delay: 0.2s;">
+          <img src="assets/hero_bg.png" alt="Students walking near historic building" id="aboutIntroImg">
+        </div>
+      </div>
+    </section>
+
+    <!-- Our Services Overview -->
+    <section class="glass" id="servicesSec" style="background: var(--color-bg-subtle); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border);">
+      <div class="section-container">
+        <div style="text-align: center; max-width: 600px; margin: 0 auto 4rem auto;">
+          <span class="info-text-tag" id="servicesOverviewTag">Our services</span>
+          <h2>Considered support at every step.</h2>
+          <p>Providing expert assistance tailored to the unique requirements of your child at every stage of the educational path.</p>
+        </div>
+        
+        <div class="cards-grid">
+          <!-- Card 1 -->
+          <div class="card-item glass reveal-on-scroll" id="srvAdviceCard">
+            <div class="card-icon">📖</div>
+            <h3>Educational Advice</h3>
+            <p>Tailored guidance for every stage of your child's UK education journey, matching ambitions with appropriate curriculum paths.</p>
+          </div>
+          <!-- Card 2 -->
+          <div class="card-item glass reveal-on-scroll" id="srvPlacementCard" style="transition-delay: 0.1s;">
+            <div class="card-icon">🏫</div>
+            <h3>School Placement</h3>
+            <p>Match your child with the right boarding or day school across England, Scotland, or Wales through thorough evaluations.</p>
+          </div>
+          <!-- Card 3 -->
+          <div class="card-item glass reveal-on-scroll" id="srvCareCard" style="transition-delay: 0.2s;">
+            <div class="card-icon">🤝</div>
+            <h3>Pastoral Care</h3>
+            <p>Ongoing support, regular school updates, and a trusted local point of contact for international families when away.</p>
+          </div>
+          <!-- Card 4 -->
+          <div class="card-item glass reveal-on-scroll" id="srvAssessmentCard" style="transition-delay: 0.3s;">
+            <div class="card-icon">📊</div>
+            <h3>Academic Assessments</h3>
+            <p>Honest evaluations and mock test preparations to understand strengths and plan the next steps with complete confidence.</p>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 4rem;">
+          <a href="services.html" class="btn btn-primary" id="viewAllServicesBtn">View all services</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Booking Banner -->
+    <section id="ctaBookingSec">
+      <div class="section-container">
+        <div class="cta-banner reveal-on-scroll" id="ctaBookingBanner">
+          <h2>Let's take the stress off you.</h2>
+          <p>We provide home visits or virtual consultations via Skype, Zoom, or Teams — wherever you are located in the world. Connect with a senior advisor today.</p>
+          <a href="book.html" class="btn btn-primary" style="background-color: #ffffff; color: hsl(var(--primary-hue), var(--primary-sat), 10%);" id="ctaBookBtn">Book your consultation</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Premium Footer -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-column" id="footerAboutCol">
+        <div class="logo" style="margin-bottom: 1.5rem;">
+          <div class="logo-icon">🎓</div>
+          <div class="logo-text">Rich Schools</div>
+        </div>
+        <p style="font-size: 0.95rem; line-height: 1.5; margin-bottom: 0;">Helping families navigate UK education with care and expertise. Let's take the stress off you.</p>
+      </div>
+      
+      <div class="footer-column" id="footerLinksCol">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column" id="footerConsultCol">
+        <h4>Consultation</h4>
+        <ul>
+          <li><a href="book.html">Book consultation</a></li>
+          <li><a href="contact.html">Home visits</a></li>
+          <li><a href="contact.html">Virtual meetings</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column" id="footerRegisterCol">
+        <h4>Receive Updates</h4>
+        <p style="font-size: 0.9rem; margin-bottom: 1rem;">Register to receive useful information and insights about the UK independent education sector.</p>
+        <form class="newsletter-form" id="footerSubForm">
+          <div class="newsletter-input-group">
+            <input type="email" placeholder="Your email address" required aria-label="Email address for newsletter" id="footerSubEmail">
+            <button type="submit" class="btn btn-primary" style="padding: 0.5rem 1.2rem; min-block-size: auto;" id="footerSubBtn">Register</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-copy" id="footerCopyright">
+        &copy; 2026 Rich Schools. All rights reserved.
+      </div>
+      <div class="footer-legal" id="footerLegalLinks">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms & Conditions</a>
+        <a href="unsubscribe.html">Unsubscribe</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

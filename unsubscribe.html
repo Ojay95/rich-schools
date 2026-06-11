@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unsubscribe — Rich Schools</title>
+  <meta name="description" content="Opt-out of Rich Schools UK independent education newsletter communications.">
+  <link rel="stylesheet" href="index.css">
+  <script src="firebase-config.js?v=1" defer></script>
+  <script src="index.js?v=1" defer></script>
+</head>
+<body>
+
+  <!-- Premium Header / Navbar -->
+  <header>
+    <div class="header-container">
+      <a href="index.html" class="logo" id="logoLink">
+        <div class="logo-icon">🎓</div>
+        <div class="logo-text">
+          Rich Schools
+          <span>UK Educational Consultancy</span>
+        </div>
+      </a>
+      
+      <button class="mobile-nav-toggle" aria-label="Toggle navigation menu" id="mobileMenuBtn">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav id="mainNav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li class="mobile-only"><a href="book.html" class="btn btn-primary" style="padding: 0.6rem 1.2rem; min-block-size: auto; display: inline-flex;">Book consultation</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-right">
+        <a href="book.html" class="btn btn-primary" id="headerCtaBtn">Book consultation</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <div class="section-container" style="max-width: 600px; padding: 4rem 0;">
+        
+        <!-- Unsubscribe Form Panel -->
+        <div class="glass" style="padding: 3rem; border-radius: var(--radius-md);" id="unsubContainer">
+          <h1 style="font-size: 2rem; margin-bottom: 1rem;">Unsubscribe</h1>
+          <p style="margin-bottom: 2.5rem;">Enter your email to unsubscribe from the Rich Schools newsletter updates.</p>
+          
+          <form id="unsubscribeForm">
+            <div class="form-group">
+              <label for="unsubEmail">Email Address</label>
+              <input type="email" id="unsubEmail" placeholder="E.g., charlotte@example.com" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="unsubReason">Reason for leaving (Optional)</label>
+              <select id="unsubReason">
+                <option value="" selected>Please select a reason...</option>
+                <option value="frequency">Emails are too frequent</option>
+                <option value="content">Content is no longer relevant</option>
+                <option value="never">I don't remember signing up</option>
+                <option value="other">Other reason</option>
+              </select>
+            </div>
+            
+            <button type="submit" class="btn btn-primary" style="margin-top: 1.5rem;" id="unsubSubmitBtn">Unsubscribe</button>
+          </form>
+        </div>
+
+        <!-- Success Confirmation State (Initially Hidden) -->
+        <div id="unsubSuccess" class="success-card glass" style="display: none;">
+          <div class="success-icon">✓</div>
+          <h2>Successfully Unsubscribed</h2>
+          <p style="margin-top: 1rem; margin-bottom: 2rem;">You have been unsubscribed from our newsletter. You will no longer receive educational updates or consultancy insights from us.</p>
+          <a href="index.html" class="btn btn-primary" id="unsubHomeBtn">Return to Home</a>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Premium Footer -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-column" id="footerAboutCol">
+        <div class="logo" style="margin-bottom: 1.5rem;">
+          <div class="logo-icon">🎓</div>
+          <div class="logo-text">Rich Schools</div>
+        </div>
+        <p style="font-size: 0.95rem; line-height: 1.5; margin-bottom: 0;">Helping families navigate UK education with care and expertise. Let's take the stress off you.</p>
+      </div>
+      
+      <div class="footer-column" id="footerLinksCol">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column" id="footerConsultCol">
+        <h4>Consultation</h4>
+        <ul>
+          <li><a href="book.html">Book consultation</a></li>
+          <li><a href="contact.html">Home visits</a></li>
+          <li><a href="contact.html">Virtual meetings</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column" id="footerRegisterCol">
+        <h4>Receive Updates</h4>
+        <p style="font-size: 0.9rem; margin-bottom: 1rem;">Register to receive useful information and insights about the UK independent education sector.</p>
+        <form class="newsletter-form" id="footerSubForm">
+          <div class="newsletter-input-group">
+            <input type="email" placeholder="Your email address" required aria-label="Email address for newsletter" id="footerSubEmail">
+            <button type="submit" class="btn btn-primary" style="padding: 0.5rem 1.2rem; min-block-size: auto;" id="footerSubBtn">Register</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-copy" id="footerCopyright">
+        &copy; 2026 Rich Schools. All rights reserved.
+      </div>
+      <div class="footer-legal" id="footerLegalLinks">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms & Conditions</a>
+        <a href="unsubscribe.html">Unsubscribe</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

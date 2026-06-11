@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — Rich Schools</title>
+  <meta name="description" content="Get in touch with Rich Schools. Send us a message for school placement, educational advice, and guardianship inquiries.">
+  <link rel="stylesheet" href="index.css">
+  <script src="firebase-config.js?v=1" defer></script>
+  <script src="index.js?v=1" defer></script>
+</head>
+<body>
+
+  <!-- Premium Header / Navbar -->
+  <header>
+    <div class="header-container">
+      <a href="index.html" class="logo" id="logoLink">
+        <div class="logo-icon">🎓</div>
+        <div class="logo-text">
+          Rich Schools
+          <span>UK Educational Consultancy</span>
+        </div>
+      </a>
+      
+      <button class="mobile-nav-toggle" aria-label="Toggle navigation menu" id="mobileMenuBtn">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav id="mainNav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html" class="active">Contact</a></li>
+          <li class="mobile-only"><a href="book.html" class="btn btn-primary" style="padding: 0.6rem 1.2rem; min-block-size: auto; display: inline-flex;">Book consultation</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-right">
+        <a href="book.html" class="btn btn-primary" id="headerCtaBtn">Book consultation</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Contact Hero -->
+    <section class="hero-sec" style="min-height: 40vh; padding: 5rem 2rem;" id="contactHero">
+      <div class="hero-bg-wrapper">
+        <img src="assets/hero_bg.png" alt="Office and phone contact desk background" id="contactHeroBg">
+      </div>
+      <div class="hero-overlay" style="background: linear-gradient(to bottom, rgba(15,23,42,0.85) 0%, var(--color-bg) 100%);"></div>
+      <div class="section-container hero-content" style="max-width: 800px; text-align: center; margin: 0 auto;">
+        <span class="hero-tagline">Communication</span>
+        <h1 class="hero-title" style="font-size: clamp(2.2rem, 1.5rem + 3vw, 3.8rem);">Get in touch</h1>
+        <p class="hero-desc" style="font-size: 1.1rem; max-width: 600px; margin: 1.5rem auto 0 auto;">We'd love to hear from you. Send us a message and we'll respond within one working day.</p>
+      </div>
+    </section>
+
+    <!-- Contact Form & Info Grid -->
+    <section id="contactGridSec">
+      <div class="section-container">
+        
+        <div class="form-grid">
+          <!-- Left: Contact Details -->
+          <div class="contact-info-card glass reveal-on-scroll" id="infoCard">
+            <h3>Direct coordinates</h3>
+            <p style="margin-bottom: 3rem;">Please feel free to contact us directly via email or telephone, or visit our central offices.</p>
+            
+            <div class="info-item" id="infoAddress">
+              <div class="info-icon">📍</div>
+              <div class="info-detail">
+                <h5>Our Office</h5>
+                <p>38 Langham Way<br>Ashland<br>Milton Keynes<br>Buckinghamshire MK6 4AU</p>
+              </div>
+            </div>
+            
+            <div class="info-item" id="infoPhone">
+              <div class="info-icon">📞</div>
+              <div class="info-detail">
+                <h5>Telephone</h5>
+                <p>+447470050005</p>
+              </div>
+            </div>
+            
+            <div class="info-item" id="infoEmail">
+              <div class="info-icon">✉️</div>
+              <div class="info-detail">
+                <h5>Email Inquiries</h5>
+                <p>info@rich-schools.com</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Interactive Contact Form -->
+          <div>
+            <div class="glass" style="padding: 3rem; border-radius: var(--radius-md);" id="formContainer">
+              <h3 style="margin-bottom: 2rem;">Send us a message</h3>
+              
+              <form id="contactForm">
+                <div class="form-group">
+                  <label for="contactName">Full Name</label>
+                  <input type="text" id="contactName" name="name" placeholder="E.g., Charlotte Sterling" required>
+                </div>
+                
+                <div class="form-group">
+                  <label for="contactEmail">Email Address</label>
+                  <input type="email" id="contactEmail" name="email" placeholder="E.g., charlotte@example.com" required>
+                </div>
+                
+                <div class="form-group">
+                  <label for="contactSubject">Subject</label>
+                  <select id="contactSubject" name="subject" required>
+                    <option value="" disabled selected>Select an option...</option>
+                    <option value="Placement">School Placement</option>
+                    <option value="Advice">Educational Advice</option>
+                    <option value="Guardianship">Pastoral Care & Guardianship</option>
+                    <option value="Assessments">Academic Assessments</option>
+                    <option value="General">General Inquiry</option>
+                  </select>
+                </div>
+                
+                <div class="form-group">
+                  <label for="contactMessage">Your Message</label>
+                  <textarea id="contactMessage" name="message" rows="5" placeholder="Please provide details about your inquiry..." required></textarea>
+                </div>
+                
+                <button type="submit" class="btn btn-primary" id="contactSubmitBtn">Send Message</button>
+              </form>
+            </div>
+
+            <!-- Success Box (Initially Hidden) -->
+            <div id="successContainer" class="success-card glass" style="display: none;">
+              <div class="success-icon">✓</div>
+              <h2>Message Sent Successfully</h2>
+              <p style="margin-top: 1rem; margin-bottom: 2rem;">Thank you for getting in touch. Your message has been routed to a senior advisor. We will review your details and respond within one working day.</p>
+              <a href="index.html" class="btn btn-primary" id="contactHomeBtn">Return to Home</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Premium Footer -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-column" id="footerAboutCol">
+        <div class="logo" style="margin-bottom: 1.5rem;">
+          <div class="logo-icon">🎓</div>
+          <div class="logo-text">Rich Schools</div>
+        </div>
+        <p style="font-size: 0.95rem; line-height: 1.5; margin-bottom: 0;">Helping families navigate UK education with care and expertise. Let's take the stress off you.</p>
+      </div>
+      
+      <div class="footer-column" id="footerLinksCol">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column" id="footerConsultCol">
+        <h4>Consultation</h4>
+        <ul>
+          <li><a href="book.html">Book consultation</a></li>
+          <li><a href="contact.html">Home visits</a></li>
+          <li><a href="contact.html">Virtual meetings</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column" id="footerRegisterCol">
+        <h4>Receive Updates</h4>
+        <p style="font-size: 0.9rem; margin-bottom: 1rem;">Register to receive useful information and insights about the UK independent education sector.</p>
+        <form class="newsletter-form" id="footerSubForm">
+          <div class="newsletter-input-group">
+            <input type="email" placeholder="Your email address" required aria-label="Email address for newsletter" id="footerSubEmail">
+            <button type="submit" class="btn btn-primary" style="padding: 0.5rem 1.2rem; min-block-size: auto;" id="footerSubBtn">Register</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-copy" id="footerCopyright">
+        &copy; 2026 Rich Schools. All rights reserved.
+      </div>
+      <div class="footer-legal" id="footerLegalLinks">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms & Conditions</a>
+        <a href="unsubscribe.html">Unsubscribe</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

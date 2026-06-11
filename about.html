@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — Rich Schools</title>
+  <meta name="description" content="Nurturing potential, every step of the way. Learn about our UK school placement philosophy and trusted relationships with academic institutions.">
+  <link rel="stylesheet" href="index.css">
+  <script src="firebase-config.js?v=1" defer></script>
+  <script src="index.js?v=1" defer></script>
+</head>
+<body>
+
+  <!-- Premium Header / Navbar -->
+  <header>
+    <div class="header-container">
+      <a href="index.html" class="logo" id="logoLink">
+        <div class="logo-icon">🎓</div>
+        <div class="logo-text">
+          Rich Schools
+          <span>UK Educational Consultancy</span>
+        </div>
+      </a>
+      
+      <button class="mobile-nav-toggle" aria-label="Toggle navigation menu" id="mobileMenuBtn">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav id="mainNav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html" class="active">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li class="mobile-only"><a href="book.html" class="btn btn-primary" style="padding: 0.6rem 1.2rem; min-block-size: auto; display: inline-flex;">Book consultation</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-right">
+        <a href="book.html" class="btn btn-primary" id="headerCtaBtn">Book consultation</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Page Header Hero -->
+    <section class="hero-sec" style="min-height: 45vh; padding: 6rem 2rem;" id="aboutHero">
+      <div class="hero-bg-wrapper">
+        <img src="assets/hero_bg.png" alt="Historic British boarding school" id="aboutHeroBg">
+      </div>
+      <div class="hero-overlay" style="background: linear-gradient(to bottom, rgba(15,23,42,0.85) 0%, var(--color-bg) 100%);"></div>
+      <div class="section-container hero-content" style="max-width: 800px; text-align: center; margin: 0 auto;">
+        <span class="hero-tagline">Our Philosophy</span>
+        <h1 class="hero-title" style="font-size: clamp(2.2rem, 1.5rem + 3vw, 3.8rem);">Nurturing potential, every step of the way.</h1>
+      </div>
+    </section>
+
+    <!-- Philosphy details -->
+    <section id="philosophySec">
+      <div class="section-container info-grid">
+        <div class="info-text reveal-on-scroll" id="philText">
+          <h2>Bespoke Guidance Built on Trust</h2>
+          <p>Rich Schools is a UK educational consultancy founded on the belief that every child deserves a school where they can thrive — academically, socially, and personally.</p>
+          <p>We've spent years cultivating strong relationships with admissions officers, housemasters, head teachers and tutors across the United Kingdom. That network lets us match each family with the right environment, not just the most famous name.</p>
+          <p>Our approach is highly individualized. We take the time to evaluate a child's temperament, talents, and long-term ambitions before recommending any institutions, ensuring a placement that supports their complete development.</p>
+        </div>
+        <div class="info-image-container reveal-on-scroll" id="philImageWrapper" style="transition-delay: 0.2s;">
+          <img src="assets/hero_bg.png" alt="Consultant discussing with parents" id="philImg">
+        </div>
+      </div>
+    </section>
+
+    <!-- Key values / Relationships -->
+    <section class="glass" id="pillarsSec" style="background: var(--color-bg-subtle); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border);">
+      <div class="section-container">
+        <div style="text-align: center; max-width: 600px; margin: 0 auto 4rem auto;">
+          <span class="info-text-tag" id="pillarsTag">Why Choose Us</span>
+          <h2>Strong relationships with institutions across the UK.</h2>
+        </div>
+        
+        <div class="cards-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+          <div class="card-item glass reveal-on-scroll" id="pillarDirect">
+            <div class="card-icon">🏛️</div>
+            <h3>Direct Direct Networks</h3>
+            <p>We work directly with leading independent schools, sixth-form colleges, and specialist tutors across England, Scotland, and Wales.</p>
+          </div>
+          <div class="card-item glass reveal-on-scroll" id="pillarSuccess" style="transition-delay: 0.15s;">
+            <div class="card-icon">🎯</div>
+            <h3>Proven Placement</h3>
+            <p>Our history of placing both UK-based and international families into schools matching their cultural and learning needs is exemplary.</p>
+          </div>
+          <div class="card-item glass reveal-on-scroll" id="pillarPersonal" style="transition-delay: 0.3s;">
+            <div class="card-icon">👤</div>
+            <h3>Senior Advisor Led</h3>
+            <p>Personal — every consultation and ongoing contact is led directly by a senior advisor who remains your family's personal point of contact.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How we work -->
+    <section id="processSec">
+      <div class="section-container" style="max-width: 900px;">
+        <div style="text-align: center; margin-bottom: 4rem;">
+          <span class="info-text-tag" id="processTag">Methodology</span>
+          <h2>How We Work</h2>
+          <p style="max-width: 650px; margin: 0 auto;">We take the stress off you through a structured yet personal placement process.</p>
+        </div>
+        
+        <div class="services-accordion" style="margin-top: 2rem;">
+          <div class="accordion-item glass open" id="step1">
+            <div class="accordion-header" id="step1Header" aria-expanded="true">
+              <span>1. Discovery & Evaluation</span>
+              <span class="accordion-icon"></span>
+            </div>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">
+                <p>We begin every relationship with an in-depth conversation — at your home or virtually — to understand your child's academic strengths, character, temperament, and ambitions. We evaluate records and execute preliminary assessments if required.</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="accordion-item glass" id="step2">
+            <div class="accordion-header" id="step2Header" aria-expanded="false">
+              <span>2. Strategy & Shortlisting</span>
+              <span class="accordion-icon"></span>
+            </div>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">
+                <p>We research and formulate a personalized strategy. We compile a shortlist of boarding or day schools that perfectly match your parameters, introducing you directly to key school contacts and organizing school visits.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item glass" id="step3">
+            <div class="accordion-header" id="step3Header" aria-expanded="false">
+              <span>3. Applications & Placements</span>
+              <span class="accordion-icon"></span>
+            </div>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">
+                <p>We guide families through the entire application process, assisting with form completions, portfolio compilation, entrance exam preparations, and interview practice. We support you through final offers and registration details.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item glass" id="step4">
+            <div class="accordion-header" id="step4Header" aria-expanded="false">
+              <span>4. Continued Guardianship & Care</span>
+              <span class="accordion-icon"></span>
+            </div>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">
+                <p>Placement is not the end of our journey. We remain involved to provide support, liaison with housemasters, monitor pastoral care, and offer academic advice throughout your child's school career.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 4rem;">
+          <a href="book.html" class="btn btn-primary" id="processBookBtn">Book a consultation</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Premium Footer -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-column" id="footerAboutCol">
+        <div class="logo" style="margin-bottom: 1.5rem;">
+          <div class="logo-icon">🎓</div>
+          <div class="logo-text">Rich Schools</div>
+        </div>
+        <p style="font-size: 0.95rem; line-height: 1.5; margin-bottom: 0;">Helping families navigate UK education with care and expertise. Let's take the stress off you.</p>
+      </div>
+      
+      <div class="footer-column" id="footerLinksCol">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column" id="footerConsultCol">
+        <h4>Consultation</h4>
+        <ul>
+          <li><a href="book.html">Book consultation</a></li>
+          <li><a href="contact.html">Home visits</a></li>
+          <li><a href="contact.html">Virtual meetings</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column" id="footerRegisterCol">
+        <h4>Receive Updates</h4>
+        <p style="font-size: 0.9rem; margin-bottom: 1rem;">Register to receive useful information and insights about the UK independent education sector.</p>
+        <form class="newsletter-form" id="footerSubForm">
+          <div class="newsletter-input-group">
+            <input type="email" placeholder="Your email address" required aria-label="Email address for newsletter" id="footerSubEmail">
+            <button type="submit" class="btn btn-primary" style="padding: 0.5rem 1.2rem; min-block-size: auto;" id="footerSubBtn">Register</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-copy" id="footerCopyright">
+        &copy; 2026 Rich Schools. All rights reserved.
+      </div>
+      <div class="footer-legal" id="footerLegalLinks">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms & Conditions</a>
+        <a href="unsubscribe.html">Unsubscribe</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
