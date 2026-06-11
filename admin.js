@@ -24,6 +24,7 @@ const postForm = document.getElementById('postForm');
 const postIdInput = document.getElementById('postId');
 const postTitleInput = document.getElementById('postTitle');
 const postCategorySelect = document.getElementById('postCategory');
+const postDateInput = document.getElementById('postDate');
 const postSnippetInput = document.getElementById('postSnippet');
 const postContentInput = document.getElementById('postContent');
 const postImageUrlInput = document.getElementById('postImageUrl');
@@ -156,6 +157,17 @@ function editPost(id, data) {
   postContentInput.value = data.content;
   postImageUrlInput.value = data.imageUrl || '';
   
+  if (data.createdAt) {
+    const d = data.createdAt.toDate ? data.createdAt.toDate() : new Date(data.createdAt);
+    if (!isNaN(d.getTime())) {
+      postDateInput.value = d.toISOString().split('T')[0];
+    } else {
+      postDateInput.value = '';
+    }
+  } else {
+    postDateInput.value = '';
+  }
+  
   if (data.imageUrl) {
     imagePreview.src = data.imageUrl;
     imagePreview.style.display = 'block';
@@ -181,6 +193,7 @@ function resetForm() {
   postForm.reset();
   postIdInput.value = '';
   postImageUrlInput.value = '';
+  postDateInput.value = '';
   imagePreview.style.display = 'none';
   imagePreview.src = '';
   
@@ -236,6 +249,7 @@ if (postForm && db) {
     const snippet = postSnippetInput.value;
     const content = postContentInput.value;
     const imageUrl = postImageUrlInput.value || 'hero_bg.png'; // default fallback
+    const publishDateVal = postDateInput.value;
 
     const postData = {
       title,
@@ -245,6 +259,10 @@ if (postForm && db) {
       imageUrl,
       updatedAt: firebase.firestore.FieldValue.serverTimestamp()
     };
+
+    if (publishDateVal) {
+      postData.createdAt = firebase.firestore.Timestamp.fromDate(new Date(publishDateVal));
+    }
 
     savePostBtn.disabled = true;
     savePostBtn.textContent = 'Saving publication...';
@@ -256,7 +274,9 @@ if (postForm && db) {
         alert("Publication modified successfully!");
       } else {
         // Create Mode
-        postData.createdAt = firebase.firestore.FieldValue.serverTimestamp();
+        if (!postData.createdAt) {
+          postData.createdAt = firebase.firestore.FieldValue.serverTimestamp();
+        }
         await db.collection("posts").add(postData);
         alert("New article published successfully!");
       }
