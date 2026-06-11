@@ -246,6 +246,19 @@ function initScheduler() {
     const today = new Date().toISOString().split('T')[0];
     dateInput.setAttribute('min', today);
     dateInput.addEventListener('change', () => {
+      const dateVal = dateInput.value;
+      if (dateVal) {
+        const dateObj = new Date(dateVal);
+        const day = dateObj.getUTCDay(); // UTC prevents timezone date shifting
+        if (day === 0 || day === 6) {
+          alert("Consultation bookings are only available Monday to Friday. Please select a weekday.");
+          dateInput.value = '';
+          selectedDate = '';
+          const nextBtn = document.getElementById('nextBtn3');
+          if (nextBtn) nextBtn.disabled = true;
+          return;
+        }
+      }
       selectedDate = dateInput.value;
       checkDateTimeCompletion();
     });
@@ -348,6 +361,32 @@ function initScheduler() {
         localBookings.push(bookingPayload);
         localStorage.setItem('rich_schools_bookings', JSON.stringify(localBookings));
         console.log("Booking saved to LocalStorage successfully.");
+      }
+
+      // Send Email notification if EmailJS is configured in firebase-config.js
+      const appConfig = window.firebaseConfig;
+      if (appConfig && appConfig.emailjsPublicKey && appConfig.emailjsPublicKey !== "YOUR_EMAILJS_PUBLIC_KEY") {
+        try {
+          if (!window.emailjs) {
+            await loadScript("https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js");
+            window.emailjs.init(appConfig.emailjsPublicKey);
+          }
+          
+          await window.emailjs.send(appConfig.emailjsServiceId, appConfig.emailjsTemplateId, {
+            to_email: appConfig.notificationEmail,
+            client_name: clientName,
+            client_email: clientEmail,
+            client_phone: clientPhone,
+            selected_service: selectedService,
+            meeting_format: selectedFormat,
+            booking_date: selectedDate,
+            booking_time: selectedTime,
+            client_notes: clientNotes
+          });
+          console.log("Email notification sent successfully via EmailJS!");
+        } catch (mailErr) {
+          console.error("Failed to send email notification via EmailJS:", mailErr);
+        }
       }
 
       setTimeout(() => {
